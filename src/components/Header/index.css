@@ -1,0 +1,149 @@
+.navbar-wrapper {
+    position: relative;
+    z-index: 999;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    /* max-width: 1000px; */
+    border-top: 4px solid #6db33f;
+    background-color: #34302d;
+    text-align: center;
+}
+
+.navbar-logo {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 224px;
+    height: 46px;
+    background: url(./logo.png) -1px -1px no-repeat;
+    transition: .5s;
+}
+
+.navbar-logo>span {
+    display: block;
+    width: 224px;
+    height: 46px;
+    background: url(./logo.png) -1px -48px no-repeat;
+    opacity: 0;
+    transition: .5s;
+}
+
+.navbar-logo>span:hover {
+    opacity: 1;
+    transition: .5s;
+}
+
+.navbar-menu {
+    margin-left: 70px;
+    height: 66px;
+    display: inline-block;
+    list-style: none;
+}
+
+.menu-item {
+    display: list-item;
+    padding: 25px 15px 0;
+    float: left;
+    height: 45px;
+    text-transform: uppercase;
+    transition: .5s;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: #eee;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 700;
+    transition: .5s;
+}
+
+.fa-search {
+    text-decoration: none;
+    color: #eee;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 700;
+    transition: .5s;
+}
+
+.fa-times {
+    color: #eee;
+    font-size: 14px;
+    font-weight: 700;
+    transition: .5s;
+}
+
+.menu-item:hover,
+.menu-item-active {
+    background-color: #6db33f;
+    transition: .5s;
+}
+
+.search-dropdown {
+    position: absolute;
+    margin-top: -70px;
+    width: 100%;
+    z-index: 997;
+    height: 70px;
+    background-color: #fff;
+    text-align: center;
+    transition: .5s;
+}
+
+.search-dropdown-open {
+    margin-top: 0;
+}
+
+.search-text-field {    
+    margin: 0 auto;
+    display: inline-block;
+    width: 84%;
+    height: 70px;
+    border: none;    
+    font-size: 30px;        
+}
+
+.search-text-field:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.dropdown-search-btn {
+    display: inline-block;
+    border: none;
+    background-color: #fff;
+}
+
+.dropdown-search-btn:focus {
+    outline: none;
+}
+
+.dropdown-search-btn i {
+    color: #000;
+    font-size: 30px;
+}
+
+@media only screen and (max-width: 1000px) { 
+    
+    .navbar-wrapper {
+        display: none;
+        text-align: center;
+    }
+
+    .navbar-logo {
+        margin-top: 10px;
+    }
+
+    .navbar-menu {
+        display: none;
+    }
+
+    .search-dropdown {
+        display: none;
+    }
+
+
+
+}
