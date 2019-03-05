@@ -2,24 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux'
 import './index.css';
 import {setCondition} from '../../actions/conditionActions'
-import {changeSearch} from '../../actions/searchActions';
+import {changeSearch} from '../../actions/productActions';
 
 let hrefsContent = ['Projects', 'Guides', 'Blog', 'Training & Certification']
 
 class Header extends React.Component {
-
-    // constructor (props) {
-    //     super(props) 
-    //     this.state = {
-    //         condition: false
-    //     }
-    // }
-
-    // handleClick = () => {
-    //     this.setState({
-    //         condition : !this.state.condition
-    //     })
-    // }
 
     addMenuElement () {
         return hrefsContent.map((item, index) => {
@@ -57,7 +44,7 @@ class Header extends React.Component {
 
 const mapStateToProps = state => {
     const { condition } = state.condition;
-    const { search } = state.search;
+    const { search } = state.products;
     return {
         condition,
         search

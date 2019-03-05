@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux'
 
+import checkLogin from './reducers/loginReducer'
 import condition from './reducers/conditionReducer'
-import search from './reducers/searchResult'
+import products from './reducers/projectsReducer'
 
 const rootReducer = combineReducers({
+    checkLogin,
     condition,
-    search
+    products
 })
 
 export default rootReducer
