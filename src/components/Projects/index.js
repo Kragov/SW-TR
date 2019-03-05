@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import { connect } from 'react-redux'
 
 let projects = [{
     projectTitle: 'Spring Boot',
@@ -34,7 +35,7 @@ let projects = [{
 
 class Projects extends React.Component {
     renderProjects () {
-        return projects.filter(item => !item.projectTitle.toLowerCase().includes(this.props.searchResult.toLowerCase()) ? false : true
+        return projects.filter(item => !item.projectTitle.toLowerCase().includes(this.props.search.toLowerCase()) ? false : true
         ).map((item, index) => {
             return (
                 <div className="project-container" key={index}>
@@ -49,11 +50,16 @@ class Projects extends React.Component {
     
     }
 
-
-
     render() {
         return this.renderProjects()
     }
 }
 
-export default Projects
+const mapStateToProps = state => {
+    const { search } = state.search;
+    return {
+        search
+    }
+}
+
+export default connect (mapStateToProps, null)(Projects)

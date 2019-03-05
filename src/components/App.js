@@ -24,8 +24,7 @@ class App extends React.Component {
             <>
             <header className="navbar">
                 <MobileHeader changeSearch={this.changeSearch} />
-                <Header changeSearch={this.changeSearch}/>
-                {/* <SearchDropdown /> */}
+                <Header />
             </header>
             <div className="main-body">
 
@@ -38,7 +37,7 @@ class App extends React.Component {
                 </p>
 
                 <div className="projects">
-                    <Projects searchResult={this.state.search}/>
+                    <Projects />
                 </div>   
             </div>
             </>

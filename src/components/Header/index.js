@@ -1,24 +1,25 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
+import { connect } from 'react-redux'
 import './index.css';
-// import SearchDropdown from './SearchDropdown/'
+import {setCondition} from '../../actions/conditionActions'
+import {changeSearch} from '../../actions/searchActions';
 
 let hrefsContent = ['Projects', 'Guides', 'Blog', 'Training & Certification']
 
 class Header extends React.Component {
 
-    constructor (props) {
-        super(props) 
-        this.state = {
-            condition: false
-        }
-    }
+    // constructor (props) {
+    //     super(props) 
+    //     this.state = {
+    //         condition: false
+    //     }
+    // }
 
-    handleClick = () => {
-        this.setState({
-            condition : !this.state.condition
-        })
-    }
+    // handleClick = () => {
+    //     this.setState({
+    //         condition : !this.state.condition
+    //     })
+    // }
 
     addMenuElement () {
         return hrefsContent.map((item, index) => {
@@ -31,6 +32,8 @@ class Header extends React.Component {
     }
 
     render() {
+        console.log(this.props)
+        console.log(this.props.condition)
         return (
             <>
             <div className="navbar-wrapper">
@@ -38,12 +41,12 @@ class Header extends React.Component {
 
                 <ul className="navbar-menu">
                     {this.addMenuElement()}
-                    <li className={this.state.condition ? "menu-item menu-item-active" : "menu-item"} onClick={this.handleClick}><i className={this.state.condition ? "fas fa-times" : "fas fa-search"} /></li>
+                    <li className={this.props.condition ? "menu-item menu-item-active" : "menu-item"} onClick={() => this.props.setCondition()}><i className={this.props.condition ? "fas fa-times" : "fas fa-search"} /></li>
                 </ul>
             </div>
 
-            <div className={this.state.condition ? "search-dropdown search-dropdown-open" : "search-dropdown"}>
-                <input type="text" placeholder="Type your words" className="search-text-field" onChange={this.props.changeSearch}/>
+            <div className={this.props.condition ? "search-dropdown search-dropdown-open" : "search-dropdown"}>
+                <input type="text" placeholder="Type your words" className="search-text-field" onChange={(e) => this.props.changeSearch(e.target.value)} value={this.props.search}/>
                 <button className="dropdown-search-btn"><i className="fas fa-search" /></button>
             </div>
             </>
@@ -52,4 +55,18 @@ class Header extends React.Component {
 
 }
 
-export default Header
+const mapStateToProps = state => {
+    const { condition } = state.condition;
+    const { search } = state.search;
+    return {
+        condition,
+        search
+    }
+}
+
+const mapDispatchToProps = {
+    setCondition,
+    changeSearch,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
